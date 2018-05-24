@@ -230,6 +230,7 @@ var config = {
 }
 altspace.utilities.sync.connect(config).then(function(sync){
   altspace.getUser().then(function(user){
+	console.log(user.userId);
     if (user.userId == '716968559271478137' || user.userId == '750257737237004725'/* || user.userId == '582115151281389721'*/) {
       kill();
       
