@@ -87,6 +87,7 @@ Released under the MIT license: http://jsbin.mit-license.org
     document.querySelector('#up').addEventListener('mousedown', function() {move(1)});
     document.querySelector('#down').addEventListener('mousedown', function() {move(-1)});
     document.querySelector('#reset').addEventListener('mousedown', function() {reset()});
+	document.querySelector('#spawn1').addEventListener('mousedown', function() {reset()});
     function set(){
       console.log('you can fly');
       document.querySelector('#up').setAttribute('position', '-0.9 0.05 -1.61');
