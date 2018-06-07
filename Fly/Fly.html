@@ -66,6 +66,40 @@ Released under the MIT license: http://jsbin.mit-license.org
     var gamepads = false;
     var box = new THREE.Mesh(new THREE.BoxGeometry(0.5,0.5,0.5), new THREE.MeshBasicMaterial({color: 0x006900}));
 	var spawn = 1;
+	var AllInteractables [
+	'res:interactables/basketball',
+	'res:interactables/bowlingball',
+	'res:interactables/bowling-pin',
+	'res:interactables/box',
+	'res:interactables/coin',
+	'res:interactables/gem',
+	'res:interactables/ring',
+	'res:interactables/soccerball',
+	'res:interactables/roasting-stick',
+	'res:interactables/roman-candle-1',
+	'res:interactables/burger-patty',
+	'res:interactables/burger-sandwich',
+	'res:interactables/can-beer-king',
+	'res:interactables/can-beer-litaf',
+	'res:interactables/can-beer-millenniale',
+	'res:interactables/can-beer-oface',
+	'res:interactables/can-beer-pegleg',
+	'res:interactables/can-soda-coconut',
+	'res:interactables/can-soda-melon',
+	'res:interactables/pizza-slice',
+	'res:interactables/spatula',
+	'res:interactables/glowstick-green',
+	'res:interactables/glowstick-purple',
+	'res:interactables/glowstick-red',
+	'res:interactables/glowstick-orange',
+	'res:interactables/glowstick-blue',
+	'res:interactables/glowstick-magenta',
+	'res:interactables/pingpong-ball',
+	'res:interactables/red-cup',
+	'res:interactables/flying-disc',
+	'res:interactables/horseshoe-a',
+	'res:interactables/horseshoe-b',
+	];
     box.position.y = 1;
     //sim.scene.add(box);
     new NativeComponent('n-box-collider', {type: 'hologram',size: '0.15 0.15 0.03'}, box).addTo(sim.scene);
@@ -115,7 +149,9 @@ Released under the MIT license: http://jsbin.mit-license.org
       //console.log(pads);
     }
 	function NextSpawn(){
-	document.querySelector('#spawner').setAttribute('n-spawner', 'res:interactables/bowlingball');
+	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
+	spawn++;
+	if(spawn > AllInteractables.length)spawn = 0;
 	}
     function go() {
       pads = altspace.getGamepads();
