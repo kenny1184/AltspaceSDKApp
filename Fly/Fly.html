@@ -134,12 +134,12 @@
     }
 	function PrevSpawner(){
 	spawn--;
-	if(spawn < 0)spawn = AllInteractables.length;
+	if(spawn < 0)spawn = 31;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
 	}
 	function NextSpawner(){
 	spawn++;
-	if(spawn > AllInteractables.length)spawn = 0;
+	if(spawn > 31)spawn = 0;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
 	}
     function go() {
