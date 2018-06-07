@@ -37,13 +37,13 @@ Released under the MIT license: http://jsbin.mit-license.org
 
      <a-entity position=" 0 100 0" id="box" n-box-collider="isTrigger:true; type:environment; size: 250 50 250" n-container="capacity:1" wire="on: container-full; emit: trig; targets: #box"></a-entity>
       
-      <a-box id='elevator' material="visible:false" scale='2000 1 2000' position='0 -5000 0' n-mesh-collider='type: environment; convex: false'></a-box> <!-- edited out: opacity='0' -->
+      <a-box id='elevator' material="visible:false" scale='2000 1 2000' position='0 -5000 0' n-mesh-collider='type: environment; convex: false'></a-box>
       
       <a-plane id="reset" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/reset.jpg' position='-1.5 -5000 -1' rotation='-25 45 0' scale='0.15 0.15 0' opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
       <a-plane id="up" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/up.jpg' position='-0.9 -5000 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
       <a-plane id="down" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/down.jpg' position='-1.1 -5000 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 	  
-	  <a-entity src:'objects/marshmallow-bag' position='-0.5 0.05 -1.8' rotation="-25 0 0" scale="1 1 1" n-cockpit-parent></a-entity>
+	  <a-plane src:'objects/marshmallow-bag' position='-0.5 0.05 -1.8' rotation="-25 0 0" scale="1 1 1" opacity='1.0' n-cockpit-parent></a-plane>
 	  
 	  <a-entity n-spawner="res:interactables/basketball" position='-0.5 0.05 -1.61' rotation="-25 0 0" scale="0.5 0.5 0" n-cockpit-parent></a-entity>
 	  <a-entity n-spawner="res:interactables/bowlingball" position='-0.3 0.05 -1.61' rotation="-25 0 0" scale="0.5 0.5 0" n-cockpit-parent></a-entity>
