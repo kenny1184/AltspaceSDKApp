@@ -27,6 +27,8 @@
 	  <a-plane id="PrevSpawn" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/prev.jpg' position='-0.7 0.05 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 	  <a-plane id="NextSpawn" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/next.jpg' position='-0.5 0.05 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 	  
+	  <a-entity id="InteractableName" n-text='text: basketball' position='-0.3 0.05 -1.61' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
+	  
 	  <a-entity id = spawner n-spawner="res:interactables/basketball" position='0.0 0.0 -0.5' rotation="-25 0 0" scale="1 1 1" n-cockpit-parent></a-entity>
 	  
 	  <a-entity n-object="res:objects/heatsource-campfire" scale='0.5 0.5 0.5' position="0 0 0" n-skeleton-parent='part:thumb side:left'></a-entity>
@@ -34,7 +36,7 @@
 	  <!-- <a-entity n-object="res:objects/marshmallow-bag" scale='100 100 100' position="0 0 0" n-skeleton-parent='part:head'></a-entity> -->
 	  
     <a-entity id="text" n-text='text: Click box or reset' position='-1 0.16 -1.68' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
-      <a-plane id="tbackground" color='#472222' position='-0.92 -5000 -1.62' rotation="-25 0 0" scale="0.37 0.25 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-entity>
+    <a-plane id="tbackground" color='#472222' position='-0.92 -5000 -1.62' rotation="-25 0 0" scale="0.37 0.25 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-entity>
 
     </a-scene>
 
@@ -83,6 +85,40 @@
 	'res:interactables/flying-disc',
 	'res:interactables/horseshoe-a',
 	'res:interactables/horseshoe-b',
+	];
+	var AllInteractableNames = [
+	'text: basketball',
+	'text: bowlingball',
+	'text: bowling-pin',
+	'text: box',
+	'text: coin',
+	'text: gem',
+	'text: ring',
+	'text: soccerball',
+	'text: roasting-stick',
+	'text: roman-candle-1',
+	'text: burger-patty',
+	'text: burger-sandwich',
+	'text: can-beer-king',
+	'text: can-beer-litaf',
+	'text: can-beer-millenniale',
+	'text: can-beer-oface',
+	'text: can-beer-pegleg',
+	'text: can-soda-coconut',
+	'text: can-soda-melon',
+	'text: pizza-slice',
+	'text: spatula',
+	'text: glowstick-green',
+	'text: glowstick-purple',
+	'text: glowstick-red',
+	'text: glowstick-orange',
+	'text: glowstick-blue',
+	'text: glowstick-magenta',
+	'text: pingpong-ball',
+	'text: red-cup',
+	'text: flying-disc',
+	'text: horseshoe-a',
+	'text: horseshoe-b',
 	];
     box.position.y = 1;
     //sim.scene.add(box);
@@ -137,11 +173,13 @@
 	spawn--;
 	if(spawn < 0)spawn = AllInteractables.length - 1;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-spawner', AllInteractableNames[spawn]);
 	}
 	function NextSpawner(){
 	spawn++;
 	if(spawn > AllInteractables.length - 1)spawn = 0;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-spawner', AllInteractableNames[spawn]);
 	}
     function go() {
       pads = altspace.getGamepads();
