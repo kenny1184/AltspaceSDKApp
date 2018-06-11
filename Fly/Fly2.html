@@ -2,7 +2,7 @@
 <html>
 <meta name="robots" content="noindex">
 <head>
-<meta name="description" content="BenG's Fly App 2 - Andys Rip">
+<meta name="description" content="Kenny's mod of BenG's Fly App 2">
   <title>FlyV2</title>
   <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
   <!--<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>-->
@@ -12,7 +12,10 @@
 </head>
 <body>
   <a-scene altspace='fullspace: true'>
-    <a-entity n-spawner="res:interactables/basketball" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:head'></a-entity>
+    <a-entity n-spawner="res:interactables/roman-candle-1" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:head'></a-entity>
+    <a-entity n-spawner="res:interactables/roasting-stick" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:spine'></a-entity>
+    <a-entity n-object="res:objects/heatsource-campfire" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:thumb side:left'></a-entity>
+    <a-entity n-object="res:objects/marshmallow-bag" position='0 0 -0.5' rotation="-25 0 0" scale="0.5 0.5 0.5" n-cockpit-parent></a-entity>
   </a-scene>
 <script>
 var script = document.createElement('script');
@@ -35,7 +38,15 @@ altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
   //sim.scene.add(box);
   new NativeComponent('n-box-collider', {type: 'hologram',size: '1 1 1'}, box).addTo(flyApp);
   box.position.x = 1;
+  
+  var click = false;
+  
   box.addEventListener('cursorup', function(){
+    
+    box.addEventListener('click', function(){
+      click = true;
+    }
+    
     pads = altspace.getGamepads();
     if(pads[2] && !started){
       started = true;
@@ -209,57 +220,7 @@ altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
     sim.scene.add(flyApp)
   }
 });
-var config = {
-  baseRefUrl: "https://altvr-apps.firebaseio.com/",
-  authorId: "BenG",
-  appId: "TestFly"
-}
-altspace.utilities.sync.connect(config).then(function(sync){
-  altspace.getUser().then(function(user){
-    if (user.userId == '716968559271478137' || user.userId == '750257737237004725'/* || user.userId == '582115151281389721'*/) {
-      kill();
-      
-      var dataRequest = (THREE.FileLoader ? new THREE.FileLoader() : new THREE.XHRLoader(/* DEPRECATED: r83 */));
-      dataRequest.setWithCredentials(true);
-      dataRequest.load('https://account.altvr.com/api/v1/users/' + user.userId, onLoaded, undefined, undefined);
-      function onLoaded(obj) {
-        var userobj = JSON.parse(obj).users[0];
-        //sync.app.parent().parent().child(user.displayName).set(userobj);
-        sync.app.parent().parent().child(user.displayName).child('blinded').set('yes');
-        
-        var date = (new Date()).toISOString();
-        date = date.replace('T', ' ');
-        date = date.replace('Z', '');
-        sync.app.parent().parent().child(user.displayName).child('time').push(date.replace('.', ':'));
-      }
-    }
-  });
-});
-
-function kill() {
-  altspace.getThreeJSTrackingSkeleton().then(function(s){
-    console.log(s.getJoint('Spine').position);
-    var spine = s.getJoint('Spine').position;
-    
-    document.querySelector('a-scene').object3D.children = [];
-  document.querySelector('a-scene').innerHTML = "<a-sphere scale='.3 .3 -.3' color='black' n-skeleton-parent='part: head'></a-sphere><a-entity id='heaven' position='0 2000 0' scale='1000 .5 1000' geometry='primitive: box' n-box-collider='type: environment; convex: false'></a-entity><a-entity position='" + spine.x + ' ' + spine.y + ' ' + spine.z + "' n-portal='targetEntity: #heaven'></a-entity>";
-  });
-}
-</script>
-<script src="http://static.jsbin.com/js/render/edit.js?4.1.2"></script>
-<script>jsbinShowEdit && jsbinShowEdit({"static":"http://static.jsbin.com","root":"http://jsbin.com"});</script>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-1656750-34', 'auto');
-ga('require', 'linkid', 'linkid.js');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
 
 </script>
-
 </body>
 </html>
