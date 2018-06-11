@@ -27,7 +27,7 @@
 	  <a-plane id="PrevSpawn" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/prev.jpg' position='-0.7 0.05 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 	  <a-plane id="NextSpawn" src='https://kenny1184.github.io/AltspaceSDKApp/Fly/next.jpg' position='-0.5 0.05 -1.61' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 	  
-	  <a-entity id="InteractableName" n-text='text: basketball' position='-0.3 0.05 -1.61' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
+	  <a-entity id="InteractableName" n-text='text: basketball' position='-0.1 0.05 -1.61' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
 	  
 	  <a-entity id = spawner n-spawner="res:interactables/basketball" position='0.0 0.0 -0.5' rotation="-25 0 0" scale="1 1 1" n-cockpit-parent></a-entity>
 	  
@@ -173,13 +173,13 @@
 	spawn--;
 	if(spawn < 0)spawn = AllInteractables.length - 1;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-spawner', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
 	}
 	function NextSpawner(){
 	spawn++;
 	if(spawn > AllInteractables.length - 1)spawn = 0;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-spawner', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
 	}
     function go() {
       pads = altspace.getGamepads();
