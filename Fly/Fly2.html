@@ -2,7 +2,7 @@
 <html>
 <meta name="robots" content="noindex">
 <head>
-<meta name="description" content="BenG's Fly App 2 - Andys Rip - mod by Kenny">
+<meta name="description" content="BenG's Fly App 2 - Andys Rip">
   <title>FlyV2</title>
   <script src="https://aframe.io/releases/0.3.0/aframe.js"></script>
   <!--<script src="https://cdn.rawgit.com/mrdoob/three.js/r84/build/three.min.js"></script>-->
@@ -35,15 +35,7 @@ altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
   //sim.scene.add(box);
   new NativeComponent('n-box-collider', {type: 'hologram',size: '1 1 1'}, box).addTo(flyApp);
   box.position.x = 1;
-  
-  var click = false;
-  
   box.addEventListener('cursorup', function(){
-    
-    box.addEventListener('click', function(){
-      click = true;
-    }
-    
     pads = altspace.getGamepads();
     if(pads[2] && !started){
       started = true;
@@ -217,8 +209,6 @@ altspace.getThreeJSTrackingSkeleton().then(function(skeleton){
     sim.scene.add(flyApp)
   }
 });
-
-
 var config = {
   baseRefUrl: "https://altvr-apps.firebaseio.com/",
   authorId: "BenG",
