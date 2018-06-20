@@ -14,9 +14,9 @@
 <body>
   <a-scene altspace='fullspace: true'>
     <a-entity n-spawner="res:interactables/roman-candle-1" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:hand; side:right'></a-entity>
-    <a-entity n-spawner="res:interactables/roasting-stick" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:spine'></a-entity>
+    <a-entity n-spawner="res:interactables/roasting-stick" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:hand; side:left'></a-entity>
     <a-entity n-object="res:objects/heatsource-campfire" scale='2 2 2' position="0 0 0" n-skeleton-parent='part:thumb; side:left'></a-entity>
-    <a-entity n-object="res:objects/marshmallow-bag" position='0 0 -0.5' rotation="-25 0 0" scale="0.5 0.5 0.5" n-cockpit-parent></a-entity>
+    <a-entity n-object="res:objects/marshmallow-bag" position='0 0 -0.3' rotation="-25 0 0" scale="0.5 0.5 0.5" n-cockpit-parent></a-entity>
   </a-scene>
 <script>
 var script = document.createElement('script');
