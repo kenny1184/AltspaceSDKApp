@@ -102,40 +102,6 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
 	'res:interactables/horseshoe-a',
 	'res:interactables/horseshoe-b',
 	];
-	var AllInteractableNames = [
-	'text: basketball',
-	'text: bowlingball',
-	'text: bowling-pin',
-	'text: box',
-	'text: coin',
-	'text: gem',
-	'text: ring',
-	'text: soccerball',
-	'text: roasting-stick',
-	'text: roman-candle-1',
-	'text: burger-patty',
-	'text: burger-sandwich',
-	'text: can-beer-king',
-	'text: can-beer-litaf',
-	'text: can-beer-millenniale',
-	'text: can-beer-oface',
-	'text: can-beer-pegleg',
-	'text: can-soda-coconut',
-	'text: can-soda-melon',
-	'text: pizza-slice',
-	'text: spatula',
-	'text: glowstick-green',
-	'text: glowstick-purple',
-	'text: glowstick-red',
-	'text: glowstick-orange',
-	'text: glowstick-blue',
-	'text: glowstick-magenta',
-	'text: pingpong-ball',
-	'text: red-cup',
-	'text: flying-disc',
-	'text: horseshoe-a',
-	'text: horseshoe-b',
-	];
     box.position.y = 1;
     //sim.scene.add(box);
     new NativeComponent('n-box-collider', {type: 'hologram',size: '0.15 0.15 0.03'}, box).addTo(sim.scene);
@@ -191,7 +157,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
   document.querySelector('#bballr').setAttribute('n-spawner', AllInteractables[spawn]);
   document.querySelector('#bballl').setAttribute('n-spawner', AllInteractables[spawn]);
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn].replace('res:interactables/','text: '));
 	}
 	function NextSpawner(){
 	spawn++;
@@ -199,7 +165,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
   document.querySelector('#bballr').setAttribute('n-spawner', AllInteractables[spawn]);
   document.querySelector('#bballl').setAttribute('n-spawner', AllInteractables[spawn]);
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn].replace('res:interactables/','text: '));
 	}
     function go() {
       pads = altspace.getGamepads();
