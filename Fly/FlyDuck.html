@@ -16,44 +16,66 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
 </head>
   <body>
 
-    <a-scene altspace="fullspace: true" vr-mode-ui="enabled: false">
+    <a-scene altspace="fullspace: true" vr-mode-ui="enabled: false" sync-system="author: Ducky; app: fly">
 
       <a-assets> 
 
        <a-mixin id="bballr" n-spawner="res:interactables/basketball" collapse-model scale="0.25 0.25 .25"></a-mixin>
-       <a-mixin id="bballr-right" rotation="0 0 0" n-skeleton-parent="part: hand; side: right; index: 0" position="0 0.01 0.03" sync sync-n-skeleton-parent></a-mixin>
+       <a-mixin id="bballr-right" rotation="0 0 0" n-skeleton-parent="part: hand; side: right; index: 0" position="0 0.01 0.07" sync sync-n-skeleton-parent></a-mixin>
 
        <a-mixin id="bballl" n-spawner="res:interactables/basketball" collapse-model scale="0.25 0.25 .25"></a-mixin>
-       <a-mixin id="bballl-left" rotation="0 0 0" n-skeleton-parent="part: hand; side: left; index: 0" position="0 0.01 0.03" sync sync-n-skeleton-parent></a-mixin>
+       <a-mixin id="bballl-left" rotation="0 0 0" n-skeleton-parent="part: hand; side: left; index: 0" position="0 0.01 0.07" sync sync-n-skeleton-parent></a-mixin>
 
       </a-assets>
 	
       <a-entity position=" 0 100 0" id="box" n-box-collider="isTrigger:true; type:environment; size: 250 50 250" n-container="capacity:1" wire="on: container-full; emit: trig; targets: #box"></a-entity>
       
-      <a-box id='elevator' material="visible:false" scale='2000 1 2000' position='0 -5000 0' n-mesh-collider='type: environment; convex: false'></a-box>
+      <a-box id='elevator' material="visible:false" scale='2000 1 2000' position='0 -5000 0' n-mesh-collider='type: environment; convex: false'>
+        <a-box id='elevator2' material="visible:false" scale='2000 1 2000' position='0 -0.2 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator3' material="visible:false" scale='2000 1 2000' position='0 -0.4 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator4' material="visible:false" scale='2000 1 2000' position='0 -0.6 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator5' material="visible:false" scale='2000 1 2000' position='0 -0.8 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator2' material="visible:false" scale='2000 1 2000' position='0 -1.0 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator3' material="visible:false" scale='2000 1 2000' position='0 -1.2 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator4' material="visible:false" scale='2000 1 2000' position='0 -1.4 0' n-mesh-collider='type: environment; convex: false'></a-box>
+        <a-box id='elevator5' material="visible:false" scale='2000 1 2000' position='0 -1.6 0' n-mesh-collider='type: environment; convex: false'></a-box>
+      </a-box>
+      
+      <a-entity id='console' position='0.8 -0.25 -1.55' rotation="0 0 0" scale="1 1 1"  n-cockpit-parent>
 
-      <a-entity id='console' position='0.8 -0.25 -1.55'rotation="0 0 0" n-cockpit-parent>
-
-        <a-entity id="bballc-spine-instantiator" geometry="primitive: plane" material="src:bbl.jpg" position='-0.7 -0.15 0.08' rotation="-25 0 0" scale="0.15 0.15 0.03" opacity='0.3' n-cockpit-parent instantiator="on: click; group: bballg1; mixin: bballl bballl-left" altspace-cursor-collider="enabled: true"></a-entity>
-        <a-entity id="bballc-spine-instantiator" geometry="primitive: plane" material="src:bbr.jpg" position='-0.5 -0.15 0.08' rotation="-25 0 0" scale="0.15 0.15 0.03" opacity='0.3' n-cockpit-parent instantiator="on: click; group: bballg2; mixin: bballr bballr-right" altspace-cursor-collider="enabled: true"></a-entity>
+        <a-entity id="bballc-spine-instantiator" geometry="primitive: plane" material="src:bbl.jpg; opacity:0.5" position='-0.7 -0.15 0.08' rotation="-25 0 0" scale="0.15 0.15 0.03" opacity='0.5' n-cockpit-parent instantiator="on: click; group: bballg1; mixin: bballl bballl-left" altspace-cursor-collider="enabled: true"></a-entity>
+        <a-entity id="bballc-spine-instantiator" geometry="primitive: plane" material="src:bbr.jpg; opacity:0.5" position='-0.5 -0.15 0.08' rotation="-25 0 0" scale="0.15 0.15 0.03" opacity='0.5' n-cockpit-parent instantiator="on: click; group: bballg2; mixin: bballr bballr-right" altspace-cursor-collider="enabled: true"></a-entity>
 
         <a-plane id="reset" src='reset.jpg' position='-1.1 -0.15 0.08' rotation='-25 0 0' scale='0.15 0.15 0' opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
+        <a-plane id="sprint" src='reset.jpg' position='-0.9 -0.15 0.08' rotation='-25 0 0' scale='0.15 0.15 0' opacity='0.5' wire="on: click; emit: run; targets: #sprintbox" n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
         <a-plane id="up" src='up.jpg' position='-0.9 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
         <a-plane id="down" src='down.jpg' position='-1.1 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
-	  
-	    <a-plane id="PrevSpawn" src='prev.jpg' position='-0.7 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
-	    <a-plane id="NextSpawn" src='next.jpg' position='-0.5 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
-	  
-	    <a-entity id="InteractableName" n-text='text: basketball' color='red' position='-0.1 0.05 0' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
+    
+        <a-plane id="PrevSpawn" src='prev.jpg' position='-0.7 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
+        <a-plane id="NextSpawn" src='next.jpg' position='-0.5 0.05 0' rotation="-25 0 0" scale="0.15 0.15 0" opacity='0.5' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
+    
+        <a-entity id="InteractableName" n-text='text: basketball' color='red' position='-0.1 0.05 0' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
 
         <a-entity id="text" n-text='text: Click the box or reset for gamepad support.' position='-0.85 -0.4 0.13' rotation="-25 0 0" scale="0.09 0.09 0" n-cockpit-parent altspace-cursor-collider="enabled: false"></a-entity>
         <a-plane id="tbackground" color='green' position='-0.8 -0.055 0.02' rotation="-25 0 0" scale="0.82 0.41 0" opacity='0.3' n-cockpit-parent altspace-cursor-collider="enabled: true"></a-plane>
 
+        <a-entity id = spawner n-spawner="res:interactables/basketball" position='-0.1 -0.15 0' rotation="-25 0 0" scale="1 1 1" n-cockpit-parent></a-entity>
+
       </a-entity>
 	  
-	  <a-entity id = "spawner" n-object="res:interactables/basketball" position='-0.2 0 0' rotation="-25 0 0" scale="0.5 0.5 0.5" n-skeleton-parent='part:hand; side:left'></a-entity>
-	  <a-entity n-object="res:objects/marshmallow-bag" position='0.2 0 0' rotation="-25 0 0" scale="0.5 0.5 0.5" n-skeleton-parent='part:hand; side:right'></a-entity>
-	  <a-entity n-object="res:objects/heatsource-campfire" scale='0.5 0.5 0.5' position="0 0 0" n-skeleton-parent='part:thumb; side:left'></a-entity>
+	  
+
+    <a-entity id="sprintbox" geometry="primitive: box" scale='1 1.5 0.5' material="color:red; opacity:0.5" position="0 0 2.5" n-skeleton-parent='part:head' n-mesh-collider='type: environment; convex: false'>
+      <a-animation id="sprinta" attribute="position" begin="on: run" dur="500" easing="ease-out" repeat="0" fill="backwards" direction="forward" from="0 0 2" to="0 0 0"></a-animation>
+      <a-entity id="sprintbox2" geometry="primitive: box" scale='1 1.5 0.5' material="color:red; opacity:0.5" position="0 0 0.1" n-skeleton-parent='part:head' n-mesh-collider='type: environment; convex: false'></a-entity>
+      <a-entity id="sprintbox3" geometry="primitive: box" scale='1 1.5 0.5' material="color:red; opacity:0.5" position="0 0 0.2" n-skeleton-parent='part:head' n-mesh-collider='type: environment; convex: false'></a-entity>
+    </a-entity>
+	  
+	  <a-entity n-object="res:objects/heatsource-campfire" scale='0.15 0.15 0.15' position="0 0 0" n-skeleton-parent='part:head'></a-entity>
+	  
+	  <a-entity n-object="res:objects/marshmallow-bag" scale='0.5 0.5 0.5' position="0 0 0" n-skeleton-parent='part:spine'></a-entity>
+	  
+    
 
     </a-scene>
 
@@ -158,7 +180,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
   document.querySelector('#bballr').setAttribute('n-spawner', AllInteractables[spawn]);
   document.querySelector('#bballl').setAttribute('n-spawner', AllInteractables[spawn]);
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/','text: '));
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/', 'text: '));
 	}
 	function NextSpawner(){
 	spawn++;
@@ -166,7 +188,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/FlyDuck.html';
   document.querySelector('#bballr').setAttribute('n-spawner', AllInteractables[spawn]);
   document.querySelector('#bballl').setAttribute('n-spawner', AllInteractables[spawn]);
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/','text: '));
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/', 'text: '));
 	}
     function go() {
       pads = altspace.getGamepads();
