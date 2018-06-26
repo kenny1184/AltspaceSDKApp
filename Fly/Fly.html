@@ -87,40 +87,7 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/Fly.html';
 	'res:interactables/flying-disc',
 	'res:interactables/horseshoe-a',
 	'res:interactables/horseshoe-b',
-	];
-	var AllInteractableNames = [
-	'text: basketball',
-	'text: bowlingball',
-	'text: bowling-pin',
-	'text: box',
-	'text: coin',
-	'text: gem',
-	'text: ring',
-	'text: soccerball',
-	'text: roasting-stick',
-	'text: roman-candle-1',
-	'text: burger-patty',
-	'text: burger-sandwich',
-	'text: can-beer-king',
-	'text: can-beer-litaf',
-	'text: can-beer-millenniale',
-	'text: can-beer-oface',
-	'text: can-beer-pegleg',
-	'text: can-soda-coconut',
-	'text: can-soda-melon',
-	'text: pizza-slice',
-	'text: spatula',
-	'text: glowstick-green',
-	'text: glowstick-purple',
-	'text: glowstick-red',
-	'text: glowstick-orange',
-	'text: glowstick-blue',
-	'text: glowstick-magenta',
-	'text: pingpong-ball',
-	'text: red-cup',
-	'text: flying-disc',
-	'text: horseshoe-a',
-	'text: horseshoe-b',
+	'res:interactables/energyBall',
 	];
     box.position.y = 1;
     //sim.scene.add(box);
@@ -175,13 +142,13 @@ window.location = 'https://kenny1184.github.io/AltspaceSDKApp/Fly/Fly.html';
 	spawn--;
 	if(spawn < 0)spawn = AllInteractables.length - 1;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/', 'text: '));
 	}
 	function NextSpawner(){
 	spawn++;
 	if(spawn > AllInteractables.length - 1)spawn = 0;
 	document.querySelector('#spawner').setAttribute('n-spawner', AllInteractables[spawn]);
-	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractableNames[spawn]);
+	document.querySelector('#InteractableName').setAttribute('n-text', AllInteractables[spawn].replace('res:interactables/', 'text: '));
 	}
     function go() {
       pads = altspace.getGamepads();
